@@ -14,6 +14,7 @@ import {
 } from "@material-tailwind/react";
 import { Pagination } from "../../components/Pagination";
 import { partidos, ufs } from "../../constants";
+import { toast } from "react-toastify";
 
 export const Home = () => {
     const { deputados, error, loading, getAllDeputados } = useDeputados();
@@ -21,6 +22,11 @@ export const Home = () => {
     const [name, setName] = useState<string | undefined>("");
     const [partido, setPartido] = useState<string | undefined>("");
     const [uf, setUf] = useState<string | undefined>("");
+
+    useEffect(() => {
+        if (!error) return;
+        toast.error(error);
+    }, [error]);
 
     useEffect(() => {
         getAllDeputados({
