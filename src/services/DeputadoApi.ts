@@ -5,8 +5,8 @@ import { IResponse } from "../interfaces/IResponse";
 
 export const getAllDeputadosApi = async (
     params: IParams
-): Promise<IResponse<Partial<IDeputado>>> => {
-    const response = await api.get<IResponse<Partial<IDeputado>>>(
+): Promise<IResponse<Partial<IDeputado[]>>> => {
+    const response = await api.get<IResponse<Partial<IDeputado[]>>>(
         "/deputados",
         {
             params,

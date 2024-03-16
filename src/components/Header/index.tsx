@@ -32,9 +32,10 @@ import {
     Typography,
 } from "@material-tailwind/react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const Header = () => {
+    const navigate = useNavigate();
     return (
         <>
             <Navbar className="min-w-full px-4 py-3 mx-auto max-w-screen-xl px-4 py-2 lg:px-8 lg:py-4">
@@ -49,7 +50,10 @@ export const Header = () => {
                     </Typography>
                     <div className="hidden lg:block">
                         <div className="ml-auto flex gap-1 md:mr-4">
-                            <IconButton variant="text">
+                            <IconButton
+                                variant="text"
+                                onClick={() => navigate("/")}
+                            >
                                 <HomeIcon className="h-4 w-4" />
                             </IconButton>
                         </div>

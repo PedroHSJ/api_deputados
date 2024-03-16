@@ -15,6 +15,7 @@ import {
 import { Pagination } from "../../components/Pagination";
 import { partidos, ufs } from "../../constants";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
     const { deputados, error, loading, getAllDeputados } = useDeputados();
@@ -22,6 +23,7 @@ export const Home = () => {
     const [name, setName] = useState<string | undefined>("");
     const [partido, setPartido] = useState<string | undefined>("");
     const [uf, setUf] = useState<string | undefined>("");
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (!error) return;
@@ -83,7 +85,7 @@ export const Home = () => {
                     <>
                         <CustomButton
                             text="Detalhes"
-                            onClick={() => console.log(record)}
+                            onClick={() => navigate(`/deputado/${record.id}`)}
                         />
                     </>
                 );
@@ -122,7 +124,7 @@ export const Home = () => {
     // }, [name, partido, uf]);
 
     return (
-        <Card className="p-8 xl:w-3/4 lg:w-3/4 md:w-3/4 w-full">
+        <div>
             <Typography variant="h3" className="mb-4">
                 Olá, seja bem-vindo!
             </Typography>
@@ -189,6 +191,6 @@ export const Home = () => {
                     onPageChange={(page) => setActualPage(page)}
                 />
             </div>
-        </Card>
+        </div>
     );
 };
